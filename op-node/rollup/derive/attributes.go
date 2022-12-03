@@ -126,7 +126,7 @@ func (ba *FetchingAttributesBuilder) PreparePayloadAttributes(ctx context.Contex
 		sysConfig.BaseFeeScalar = baseFeeScalar
 
 
-	txs := make([]hexutil.Bytes, 0, 1+len(depositTxs))
+	txs := make([]hexutil.Bytes, 0, 2+len(depositTxs))
 	txs = append(txs, l1InfoTx)
 	txs = append(txs, tickTx)
 	txs = append(txs, depositTxs...)
