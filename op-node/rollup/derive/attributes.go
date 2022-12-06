@@ -107,7 +107,7 @@ func (ba *FetchingAttributesBuilder) PreparePayloadAttributes(ctx context.Contex
 		return nil, NewCriticalError(fmt.Errorf("failed to create l1InfoTx: %w", err))
 	}
 
-	tickTx, err := TickDepositBytes(seqNumber, l1Info)
+	tickTx, err := TickDepositBytes(seqNumber, cfg.Genesis.SystemConfig.TickGasLimit, l1Info)
 	if err != nil {
 		return nil, NewCriticalError(fmt.Errorf("failed to create tickTx: %w", err))
 	}

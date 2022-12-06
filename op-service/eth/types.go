@@ -320,6 +320,8 @@ type SystemConfig struct {
 	BaseFeeScalar uint32 `json:"baseFeeScalar"`
 	// BlobBaseFeeScalar scales the L1 blob fee after the Ecotone upgrade
 	BlobBaseFeeScalar uint32 `json:"blobBaseFeeScalar"`
+	// TickGasLimit identifies the L2 tick gas limit
+	TickGasLimit uint64 `json:"tickGasLimit"`
 	// More fields can be added for future SystemConfig versions.
 }
 
