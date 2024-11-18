@@ -107,6 +107,11 @@ func (ba *FetchingAttributesBuilder) PreparePayloadAttributes(ctx context.Contex
 		return nil, NewCriticalError(fmt.Errorf("failed to create l1InfoTx: %w", err))
 	}
 
+	tickTx, err := TickDepositBytes(seqNumber, l1Info)
+	if err != nil {
+		return nil, NewCriticalError(fmt.Errorf("failed to create tickTx: %w", err))
+	}
+
 	// If this is the Ecotone activation block we update the system config by copying over "Scalar"
 	// to "BaseFeeScalar". Note that after doing so, the L2 view of the system config differs from
 	// that on the L1 up until we receive a "type 4" log event that explicitly updates the new
@@ -119,10 +124,11 @@ func (ba *FetchingAttributesBuilder) PreparePayloadAttributes(ctx context.Contex
 			baseFeeScalar = uint32(scalar.Int64())
 		}
 		sysConfig.BaseFeeScalar = baseFeeScalar
-	}
+
 
 	txs := make([]hexutil.Bytes, 0, 1+len(depositTxs))
 	txs = append(txs, l1InfoTx)
+	txs = append(txs, tickTx)
 	txs = append(txs, depositTxs...)
 
 	var withdrawals *types.Withdrawals

@@ -182,6 +182,10 @@ type DeployConfig struct {
 	// GovernanceTokenOwner represents the owner of the GovernanceToken. Has the ability
 	// to mint and burn tokens.
 	GovernanceTokenOwner common.Address `json:"governanceTokenOwner"`
+	// TickOwner represents the owner of the Tick predeploy.
+	TickOwner common.Address `json:"tickOwner"`
+	// TickTarget represents the target of the Tick predeploy.
+	TickTarget common.Address `json:"tickTarget"`
 	// DeploymentWaitConfirmations is the number of confirmations to wait during
 	// deployment. This is DEPRECATED and should be removed in a future PR.
 	DeploymentWaitConfirmations int `json:"deploymentWaitConfirmations"`
@@ -875,6 +879,10 @@ func NewL2StorageConfig(config *DeployConfig, block *types.Block) (state.Storage
 		"batcherHash":    eth.AddressAsLeftPaddedHash(config.BatchSenderAddress),
 		"l1FeeOverhead":  config.GasPriceOracleOverhead,
 		"l1FeeScalar":    config.GasPriceOracleScalar,
+	}
+	storage["Tick"] = state.StorageValues{
+		"_owner": config.TickOwner,
+		"target": config.TickTarget,
 	}
 	storage["LegacyERC20ETH"] = state.StorageValues{
 		"_name":   "Ether",

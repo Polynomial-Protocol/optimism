@@ -42,6 +42,7 @@ type PredeploysImmutableConfig struct {
 	L1BlockNumber       struct{}
 	GasPriceOracle      struct{}
 	L1Block             struct{}
+	Tick                struct{}
 	GovernanceToken     struct{}
 	LegacyMessagePasser struct{}
 	L2ERC721Bridge      struct {

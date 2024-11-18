@@ -16,6 +16,7 @@ const (
 	L1BlockNumber                 = "0x4200000000000000000000000000000000000013"
 	GasPriceOracle                = "0x420000000000000000000000000000000000000F"
 	L1Block                       = "0x4200000000000000000000000000000000000015"
+	Tick                          = "0x42000000000000000000000000000000000000A0"
 	GovernanceToken               = "0x4200000000000000000000000000000000000042"
 	LegacyMessagePasser           = "0x4200000000000000000000000000000000000000"
 	L2ERC721Bridge                = "0x4200000000000000000000000000000000000014"
@@ -49,6 +50,7 @@ var (
 	L1BlockNumberAddr                 = common.HexToAddress(L1BlockNumber)
 	GasPriceOracleAddr                = common.HexToAddress(GasPriceOracle)
 	L1BlockAddr                       = common.HexToAddress(L1Block)
+	TickAddr                          = common.HexToAddress(Tick)
 	GovernanceTokenAddr               = common.HexToAddress(GovernanceToken)
 	LegacyMessagePasserAddr           = common.HexToAddress(LegacyMessagePasser)
 	L2ERC721BridgeAddr                = common.HexToAddress(L2ERC721Bridge)
@@ -76,6 +78,7 @@ var (
 
 func init() {
 	Predeploys["L2ToL1MessagePasser"] = &Predeploy{Address: L2ToL1MessagePasserAddr}
+	Predeploys["Tick"] = &Predeploy{Address: TickAddr}
 	Predeploys["DeployerWhitelist"] = &Predeploy{Address: DeployerWhitelistAddr}
 	Predeploys["WETH9"] = &Predeploy{Address: WETH9Addr, ProxyDisabled: true}
 	Predeploys["L2CrossDomainMessenger"] = &Predeploy{Address: L2CrossDomainMessengerAddr}
