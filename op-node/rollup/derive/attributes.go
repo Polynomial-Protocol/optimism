@@ -107,7 +107,7 @@ func (ba *FetchingAttributesBuilder) PreparePayloadAttributes(ctx context.Contex
 		return nil, NewCriticalError(fmt.Errorf("failed to create l1InfoTx: %w", err))
 	}
 
-	tickTx, err := TickDepositBytes(seqNumber, cfg.Genesis.SystemConfig.TickGasLimit, l1Info)
+	tickTx, err := TickDepositBytes(seqNumber, ba.rollupCfg.Genesis.SystemConfig.TickGasLimit, l1Info)
 	if err != nil {
 		return nil, NewCriticalError(fmt.Errorf("failed to create tickTx: %w", err))
 	}
@@ -125,7 +125,6 @@ func (ba *FetchingAttributesBuilder) PreparePayloadAttributes(ctx context.Contex
 		}
 		sysConfig.BaseFeeScalar = baseFeeScalar
 	}
-
 
 	txs := make([]hexutil.Bytes, 0, 2+len(depositTxs))
 	txs = append(txs, l1InfoTx)
