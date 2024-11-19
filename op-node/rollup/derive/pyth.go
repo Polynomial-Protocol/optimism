@@ -59,7 +59,7 @@ func PythDeposit(seqNumber uint64, pythGasLimit uint64, block eth.BlockInfo, pri
 	}
 	source := L1InfoDepositSource{
 		L1BlockHash: block.Hash(),
-		SeqNumber:   seqNumber + 1,
+		SeqNumber:   seqNumber,
 	}
 	return &types.DepositTx{
 		SourceHash:          source.SourceHash(),
