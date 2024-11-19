@@ -107,7 +107,7 @@ func (ba *FetchingAttributesBuilder) PreparePayloadAttributes(ctx context.Contex
 		return nil, NewCriticalError(fmt.Errorf("failed to create l1InfoTx: %w", err))
 	}
 
-	tickTx, err := TickDepositBytes(seqNumber+1, ba.rollupCfg.Genesis.SystemConfig.TickGasLimit, l1Info)
+	tickTx, err := TickDepositBytes(seqNumber, ba.rollupCfg.Genesis.SystemConfig.TickGasLimit, l1Info)
 	if err != nil {
 		return nil, NewCriticalError(fmt.Errorf("failed to create tickTx: %w", err))
 	}
@@ -120,7 +120,7 @@ func (ba *FetchingAttributesBuilder) PreparePayloadAttributes(ctx context.Contex
 	priceFeeds = append(priceFeeds, demoData...)
 	//
 
-	pythTx, err := PythDepositBytes(seqNumber+2, ba.rollupCfg.Genesis.SystemConfig.PythGasLimit, l1Info, priceFeeds)
+	pythTx, err := PythDepositBytes(seqNumber, ba.rollupCfg.Genesis.SystemConfig.PythGasLimit, l1Info, priceFeeds)
 	if err != nil {
 		return nil, NewCriticalError(fmt.Errorf("failed to create pythTx: %w", err))
 	}
