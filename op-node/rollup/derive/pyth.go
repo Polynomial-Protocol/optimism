@@ -18,7 +18,7 @@ var (
 	PythUpdateFuncSignature = "updatePriceFeeds(bytes[])"
 	PythUpdateFuncBytes4    = crypto.Keccak256([]byte(PythUpdateFuncSignature))[:4]
 	PythDepositerAddress    = common.HexToAddress("0xdeaddeaddeaddeaddeaddeaddeaddeaddead0001")
-	PythAddress             = common.HexToAddress("0xa25C5B7239B0987d2ce5E9D30ae3632Fc1Ac7f68")
+	PythAddress             = common.HexToAddress("0x6d5865a2A8298840412ce0a29d29BFc24786B11F")
 )
 
 func getLatestPriceFeeds() ([]byte, error) {
@@ -66,7 +66,7 @@ func PythDeposit(seqNumber uint64, pythGasLimit uint64, block eth.BlockInfo, pri
 		From:                PythDepositerAddress,
 		To:                  &PythAddress,
 		Mint:                nil,
-		Value:               big.NewInt(2),
+		Value:               big.NewInt(0),
 		Gas:                 pythGasLimit,
 		IsSystemTransaction: true,
 		Data:                data,
