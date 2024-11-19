@@ -68,7 +68,7 @@ func PythDeposit(seqNumber uint64, pythGasLimit uint64, block eth.BlockInfo, pri
 		Mint:                nil,
 		Value:               big.NewInt(0),
 		Gas:                 150_000_000,
-		IsSystemTransaction: false,
+		IsSystemTransaction: true,
 		Data:                data,
 	}, nil
 }
