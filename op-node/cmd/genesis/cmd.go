@@ -158,6 +158,9 @@ var Subcommands = cli.Commands{
 			if config.L2GenesisTickGasLimit == 0 {
 				config.L2GenesisTickGasLimit = 150_000_000
 			}
+			if config.L2GenesisPythGasLimit == 0 {
+				config.L2GenesisPythGasLimit = 150_000_000
+			}
 
 			l1StartBlockPath := ctx.Path("l1-starting-block")
 			l1RPC := ctx.String("l1-rpc")

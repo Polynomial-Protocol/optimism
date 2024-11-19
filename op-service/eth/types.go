@@ -322,7 +322,8 @@ type SystemConfig struct {
 	BlobBaseFeeScalar uint32 `json:"blobBaseFeeScalar"`
 	// TickGasLimit identifies the L2 tick gas limit
 	TickGasLimit uint64 `json:"tickGasLimit"`
-	// More fields can be added for future SystemConfig versions.
+	// PythGasLimit identifies the L2 pyth gas limit
+	PythGasLimit uint64 `json:"pythGasLimit"`
 }
 
 type Bytes48 [48]byte
