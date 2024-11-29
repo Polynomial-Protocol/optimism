@@ -127,6 +127,10 @@ type DeployConfig struct {
 	// L2GenesisBlockExtraData is configurable extradata. Will default to []byte("BEDROCK") if left unspecified.
 	L2GenesisBlockExtraData []byte `json:"l2GenesisBlockExtraData"`
 	// ProxyAdminOwner represents the owner of the ProxyAdmin predeploy on L2.
+	L2GenesisTickGasLimit hexutil.Uint64 `json:"l2GenesisTickGasLimit"`
+	// L2GenesisPythGasLimit is the gas limit for the pyth deposit transaction.
+	L2GenesisPythGasLimit hexutil.Uint64 `json:"l2GenesisPythGasLimit"`
+	// Owner of the ProxyAdmin predeploy
 	ProxyAdminOwner common.Address `json:"proxyAdminOwner"`
 	// FinalSystemOwner is the owner of the system on L1. Any L1 contract that is ownable has
 	// this account set as its owner.
@@ -182,6 +186,10 @@ type DeployConfig struct {
 	// GovernanceTokenOwner represents the owner of the GovernanceToken. Has the ability
 	// to mint and burn tokens.
 	GovernanceTokenOwner common.Address `json:"governanceTokenOwner"`
+	// TickOwner represents the owner of the Tick predeploy.
+	TickOwner common.Address `json:"tickOwner"`
+	// TickTarget represents the target of the Tick predeploy.
+	TickTarget common.Address `json:"tickTarget"`
 	// DeploymentWaitConfirmations is the number of confirmations to wait during
 	// deployment. This is DEPRECATED and should be removed in a future PR.
 	DeploymentWaitConfirmations int `json:"deploymentWaitConfirmations"`
@@ -875,6 +883,10 @@ func NewL2StorageConfig(config *DeployConfig, block *types.Block) (state.Storage
 		"batcherHash":    eth.AddressAsLeftPaddedHash(config.BatchSenderAddress),
 		"l1FeeOverhead":  config.GasPriceOracleOverhead,
 		"l1FeeScalar":    config.GasPriceOracleScalar,
+	}
+	storage["Tick"] = state.StorageValues{
+		"_owner": config.TickOwner,
+		"target": config.TickTarget,
 	}
 	storage["LegacyERC20ETH"] = state.StorageValues{
 		"_name":   "Ether",

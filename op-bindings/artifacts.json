@@ -22,6 +22,7 @@
     "LegacyERC20ETH",
     "Proxy",
     "ProxyAdmin",
+    "Tick",
     "LegacyMessagePasser",
     "ERC20",
     "WETH9",
